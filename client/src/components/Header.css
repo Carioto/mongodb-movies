@@ -1,0 +1,8 @@
+.headcont {
+  display: flex;
+  height: 100px;
+}
+.logo {
+  width: 70%;
+  margin-left: auto;
+}
