@@ -4,8 +4,21 @@
   "description": "server side for mongodb movies MERN app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node seeders/seed.js"
   },
   "author": "David Carioto",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.7.1",
+    "express": "^4.17.2",
+    "graphql": "^16.6.0",
+    "mongodb": "^6.7.0",
+    "mongoose": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
 }
