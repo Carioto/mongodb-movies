@@ -1,0 +1,20 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(Lobster-Regular.ttf);
+}
+
+.footdiv {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 53px;
+  background-color: bisque;
+}
+.footimg {
+  height: 50px;
+}
+.footnote {
+  margin-left: 5px;
+  font-family: myFirstFont;
+}

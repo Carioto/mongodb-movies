@@ -25,18 +25,18 @@ export default function Header() {
   </li>
 
   <li className="nav-item">
-    <Link 
-     to='login'
-     className={currentPage === '/login' ? 'nav-link active' : 'nav-link'}
-     >Login
+    <Link
+     to='random'
+     className={currentPage === '/random' ? 'nav-link active' : 'nav-link'}
+     >Random
      </Link>
   </li>
 
   <li className="nav-item">
-    <Link
-     to='signup'
-     className={currentPage === '/signup' ? 'nav-link active' : 'nav-link'}
-     >Signup
+    <Link 
+     to='login'
+     className={currentPage === '/login' ? 'nav-link active' : 'nav-link'}
+     >Login
      </Link>
   </li>
 

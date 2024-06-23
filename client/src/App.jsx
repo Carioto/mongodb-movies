@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
+import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
 import {
   ApolloClient,
@@ -8,6 +9,8 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+
+
 
 const client = new ApolloClient({
   uri:'/graphql',
@@ -23,6 +26,7 @@ function App() {
     <main>
     <Outlet />
     </main>
+    <Footer />
     </ApolloProvider>
   )
 }

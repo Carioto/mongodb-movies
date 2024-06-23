@@ -51,6 +51,8 @@ type View {
 type Query {
 # get all movies
 movies:[Movie]!
+# get movie count
+randmovie:Movie
 }
 `;
 

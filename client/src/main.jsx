@@ -9,7 +9,7 @@ import Error from './pages/Error';
 import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
 import Login from './pages/Login.jsx';
-import Signup from './pages/Signup.jsx';
+import Random from './pages/Random.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,12 +26,12 @@ const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: '/login',
-        element: <Login />,
+        path: '/random',
+        element: <Random />,
       },
       {
-        path: '/signup',
-        element: <Signup />,
+        path: '/login',
+        element: <Login />,
       },
     ],
   }

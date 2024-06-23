@@ -15,5 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "unix-timestamp": "^1.0.4"
   }
 }

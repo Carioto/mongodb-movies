@@ -1,4 +1,4 @@
-const Movie = require('../models/Movie');
+const { Movie } = require('../models');
 
 const resolvers = {
     Query: {
@@ -6,6 +6,12 @@ const resolvers = {
           const newmovs =  Movie.find()
           return newmovs
         },
+        randmovie:async(parent) => {
+         const randmovie=  await Movie.aggregate(
+            [{ $sample: { size: 1 } }]);
+          console.log(randmovie);
+          return randmovie[0]
+        }
     }
 }
 
