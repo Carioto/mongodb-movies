@@ -1,6 +1,8 @@
 .headcont {
   display: flex;
   height: 100px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid blueviolet;
 }
 .logo {
   width: 70%;
