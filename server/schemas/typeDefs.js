@@ -51,8 +51,14 @@ type View {
 type Query {
 # get all movies
 movies:[Movie]!
-# get movie count
+# get a random movie
 randmovie:Movie
+# get a random movie with params
+randfocusedmovie:Movie
+# get list of all genres
+genrelist:[Movie]
+# get list of all languages
+languagelist:[Movie]
 }
 `;
 
