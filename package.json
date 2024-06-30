@@ -1,6 +1,9 @@
 {
   "name": "mongodb-movies",
   "version": "1.0.0",
+  "engines": {
+    "node": "20.x"
+  },
   "description": "app for use with the mongoDB movies collection",
   "main": "server/server.js",
   "scripts": {
