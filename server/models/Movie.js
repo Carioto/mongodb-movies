@@ -28,17 +28,14 @@ const movieSchema = new Schema (
     {
         plot: {
             type: String,
-            // required:true,
         },
         genres: [
             {
             type: String,
-            // required:true,
             },
         ],
         runtime: {
             type: Number,
-            // required:true,
         },
         cast: [
             {
@@ -47,7 +44,6 @@ const movieSchema = new Schema (
         ],
         poster: {
             type: String,
-            required:false,
         },
         title:{
             type:String,
@@ -55,27 +51,22 @@ const movieSchema = new Schema (
         },
         fullplot: {
             type: String,
-            required: false,
         },
         languages: [
             {
             type: String,
-            required: false,
             },  
         ],
         released: {
             type: Date,
-            // required: true,
         },
         directors:[
             {
                 type: String, 
-                // required: true,
             },
         ],
         rated: {
             type: String,
-            required: false,
         },
         awards:[Award],
         lastupdated: {
@@ -83,7 +74,7 @@ const movieSchema = new Schema (
             default: Date.now,
         },
         year:{
-            type:Date,
+            type:Number,
         },
         imdb:[Imdb],
         countries:[

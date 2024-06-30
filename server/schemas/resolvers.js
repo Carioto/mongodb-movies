@@ -6,42 +6,36 @@ const resolvers = {
           const newmovs =  Movie.find()
           return newmovs
         },
-        // movieswithparams:async(parent) => {
-        //   const parammovs =  Movie.aggregate([
-        //     {
-        //       $match: { genres: ["Action"] }
-        //     },
-        //     {
-        //       $group:{_id:"$title", year:"year"}
-        //     }
-        //   ]);
-        movieswithparams:async(parent) => {
-          const parammovs =  Movie.find(
-            {
-          languages:["English"],
-          genres:["$default"]
 
-            },
-          
-          );
+        movieswithparams: async(parent, {genres}) => {
+          console.log('made it');
+        let pipeline=[];
+          pipeline.push({$match:{year:1951}})
+          pipeline.push({$match:{languages:'English'}})
+          pipeline.push({$match:{genres:'Comedy'}})
+          pipeline.push({$sample: { size: 12 } })
 
-
-          console.log("🚀 ~ movieswithparams:async ~ parammovs:", parammovs)
-          return parammovs
+        const parammovs =  Movie.aggregate( pipeline );
+        return parammovs
         },
-        randmovie:async(parent) => {
+
+        randmovie:async(parent, {year}) => {
+          console.log('Made IT',parent,  year)
          const randmovie=  await Movie.aggregate(
-            [{ $sample: { size: 1 } }]);
+          [{$match:{year:1950}},
+            { $sample: { size: 1 } }]);
           console.log(randmovie);
           return randmovie[0]
         },
+
         randfocusedmovie:async(parent) => {
          const randfocusedmovie=  await Movie.aggregate(
-           [{$match: {year:year}},
+           [{$match: {$year:year}},
             { $sample: { size: 1 } }]);
           console.log(randfocusedmovie);
           return randfocusedmovie[0]
         },
+
         genrelist:async(parent) => {
          const listgenres=  await Movie.aggregate(
            [
@@ -53,6 +47,7 @@ const resolvers = {
             ])
             return listgenres;
           },
+
           languagelist:async(parent) => {
             const listlanguages=  await Movie.aggregate(
               [{$unwind:"$languages"},

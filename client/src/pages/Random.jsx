@@ -1,31 +1,22 @@
 import './Random.css';
-import { QUERY_ALL_MOVIES, QUERY_RANDOM_MOVIE, QUERY_FOCUSED_RANDOM_MOVIE } from '../utils/queries';
-import { useQuery,useLazyQuery } from '@apollo/client';
+import { QUERY_RANDOM_MOVIE } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import YearScroll from '../components/YearScroll'
 
 export default function Random(){
-    const { movieData, setMovieData } = useState("");
-    const { loading, error, data } = useQuery(QUERY_RANDOM_MOVIE);
-
+    const [ year, setYear ] = useState(1950);
+    const { loading, error, data, refetch } = useQuery(QUERY_RANDOM_MOVIE, {
+        variables:{ year:year },
+    });
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
-
-
-    // useEffect(() => {
-    //         getData({variables:zipper})
-    //         console.log("🚀 ~ useEffect ~ getData:", getData)
             
-    //     },[zipper])
-        
-        function HandleRandClick(year) {
-            console.log(parseInt(year.target.value));
-            console.log(year.target.value)
-    }
-
-    
-
-
+    const childToParent = (getData) => {
+            setYear(getData.value);
+            console.log("🚀 ~ Search ~ setYearSearch:", getData.value)
+            console.log("🚀 ~ Search ~",year)
+        }
 
 
     return (
@@ -49,9 +40,9 @@ export default function Random(){
                  </div>
                  <div className='threeofthree'>
                     <h4>Narrow the Search -- not complete</h4>
-                    <YearScroll onChange={HandleRandClick}/>
+                    <YearScroll childToParent={childToParent}/>
             
-                    <button className='nextrand' onClick={HandleRandClick}>Next Random</button>
+                    <button className='nextrand' onClick={() => refetch()}>Next Random</button>
                     </div>
                 </div>
 

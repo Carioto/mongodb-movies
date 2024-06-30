@@ -14,7 +14,7 @@ type Movie {
     rated: String
     awards:[Award]
     lastupdated: String
-    year:String
+    year:Int
     imdb:[Imdb]
     countries:[String]
     tomatoes:[Tomato]
@@ -52,7 +52,7 @@ type Query {
 # get all movies
 movies:[Movie]!
 # get a random movie
-randmovie:Movie
+randmovie:Movie!
 # get a random movie with params
 randfocusedmovie:Movie
 # get list of all genres

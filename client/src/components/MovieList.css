@@ -1,0 +1,11 @@
+.movielist {
+  margin: 35px auto;
+  width: 85%;
+}
+.listrow {
+  font-size: 1.25rem;
+  border-bottom: 1px dodgerblue dotted;
+}
+td {
+  width: 33%;
+}

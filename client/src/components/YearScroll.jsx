@@ -11,7 +11,7 @@ function YearScroll({childToParent}) {
     return( 
     <>
     <select className="form-select" name='year' onChange={() => childToParent(event.target)} aria-label="Default select example">
-    <option >Pick Year</option>
+    <option value={0}>Pick Year</option>
      {yeararr.map((year) => {
        return <option key={year} value={year}>{year}</option>
      })}

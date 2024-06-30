@@ -2,12 +2,20 @@ import YearScroll from '../components/YearScroll'
 import GenreScroll from '../components/GenreScroll';
 import LanguageScroll from '../components/LanguageScroll';
 import { useState } from 'react';
+import { useQuery, useLazyQuery } from '@apollo/client';
+import { QUERY_MOVIES_WITH_PARAMS } from '../utils/queries';
+import MovieList from '../components/MovieList';
 
 function Search(){
   const [ langSearch, setLangSearch ] = useState('nil');
-  const [ genreSearch, setGenreSearch ] = useState('nil');
+  const [ genres, setGenreSearch ] = useState('nil');
   const [ yearSearch, setYearSearch ] = useState(0);
-  
+  const [getMovie, { loading, error, data, refetch, networkStatus }] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS);
+  console.log("🚀 ~ Search ~ data:", data)
+  console.log("🚀 ~ Search ~ genres:", genres)
+  console.log("🚀 ~ Search ~ networkStatus:", networkStatus)
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
   const childToParent = (getData) => {
     if(getData.name === 'language'){
       setLangSearch(getData.value)
@@ -23,12 +31,6 @@ function Search(){
       
     }}
 
-    function getFreshList(){
-      console.log(langSearch,genreSearch,yearSearch)
-    }
-
-
-
     return(
       <>
       <div>
@@ -41,14 +43,18 @@ function Search(){
         <LanguageScroll childToParent={childToParent} />
 
         <button name='searchParams'
-          onClick={() => getFreshList(langSearch, genreSearch, yearSearch)}
-        >Search</button>
-
-
-
-
+          onClick={() => getMovie(
+            // {variables: { genres:'Comedy'}}
+            )
+          }>Search</button>
       </div>
+      <div>
+         <MovieList props={data} />
+      </div>
+
+
       </>
+
     )
 }
 export default Search;
