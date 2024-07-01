@@ -31,8 +31,8 @@ released
 }`;
 
 export const QUERY_RANDOM_MOVIE = gql `
-query RandomMovie($year:Number){
-randmovie(year:$year){
+query RandomMovie{
+randmovie{
 _id
 title
 plot

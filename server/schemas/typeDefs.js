@@ -52,7 +52,7 @@ type Query {
 # get all movies
 movies:[Movie]!
 # get a random movie
-randmovie:Movie!
+randmovie(year: Int): Movie
 # get a random movie with params
 randfocusedmovie:Movie
 # get list of all genres
