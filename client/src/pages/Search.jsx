@@ -5,17 +5,25 @@ import { useState } from 'react';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_MOVIES_WITH_PARAMS } from '../utils/queries';
 import MovieList from '../components/MovieList';
+import './Search.css'
+import '../components/Button/style.css'
 
 function Search(){
   const [ langSearch, setLangSearch ] = useState('nil');
   const [ genres, setGenreSearch ] = useState('nil');
   const [ yearSearch, setYearSearch ] = useState(0);
-  const [getMovie, { loading, error, data, refetch, networkStatus }] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS);
+
+  const [getMovie, { loading, error, data, refetch, networkStatus }] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
+          variables:{genres:genres},
+  });
+  
   console.log("🚀 ~ Search ~ data:", data)
   console.log("🚀 ~ Search ~ genres:", genres)
   console.log("🚀 ~ Search ~ networkStatus:", networkStatus)
+  
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
+  
   const childToParent = (getData) => {
     if(getData.name === 'language'){
       setLangSearch(getData.value)
@@ -42,11 +50,16 @@ function Search(){
         <GenreScroll childToParent={childToParent} />
         <LanguageScroll childToParent={childToParent} />
 
-        <button name='searchParams'
-          onClick={() => getMovie(
-            // {variables: { genres:'Comedy'}}
-            )
+        <div className='button-container-1'>
+        <span className="mas">Search</span>
+        <button name='searchParams' className='paramsBut '
+          onClick={
+       () => getMovie({variables: { genres:genres}})
           }>Search</button>
+          
+          
+          </div> 
+
       </div>
       <div>
          <MovieList props={data} />

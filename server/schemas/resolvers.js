@@ -8,7 +8,7 @@ const resolvers = {
         },
 
         movieswithparams: async(parent, {genres}) => {
-          console.log('made it');
+          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!made it', genres);
         let pipeline=[];
           pipeline.push({$match:{year:1951}})
           pipeline.push({$match:{languages:'English'}})
@@ -20,9 +20,9 @@ const resolvers = {
         },
 
         randmovie:async(parent, {year}) => {
-          console.log('Made IT',parent,  year)
+          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Made IT',parent,  year)
          const randmovie=  await Movie.aggregate(
-          [{$match:{year:1950}},
+          [{$match:{year:year}},
             { $sample: { size: 1 } }]);
           console.log(randmovie);
           return randmovie[0]
