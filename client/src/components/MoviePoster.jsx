@@ -1,6 +1,5 @@
 
 export default function MoviePoster(props){
-console.log("🚀 ~ MoviePoster ~ props:", props)
 
     if(props.props.randmovie.poster){
         return(

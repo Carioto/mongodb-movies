@@ -12,6 +12,10 @@
 .star {
   margin-top: 10px;
 }
+.theYear {
+  font-size: 1.5rem;
+}
+
 .plot {
   width: 75%;
   margin: auto;

@@ -8,19 +8,21 @@ function YearScroll({childToParent}) {
         yeararr.push(x)    
     }
 
+    const clickHandler = (event) => {
+      console.log("🚀 ~ clickHandler ~ event:", event.target.value)
+      childToParent(event.target);
+      event.preventDefault();
+    }
+
+
     return( 
     <>
-    <select className="form-select paramselect" name='year' onChange={() => childToParent(event.target)} aria-label="Default select example">
-    <option value={0}>Year</option>
+    <select className="form-select paramselect" name='year' onChange={() => clickHandler(event)} aria-label="Default select example">
+    <option className="text-center" value={0}>Year</option>
      {yeararr.map((year) => {
        return <option key={year} value={year}>{year}</option>
      })}
-    </select>
-    
-    
-    
-    
-    
+    </select>  
     </>
 
     )

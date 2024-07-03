@@ -7,7 +7,7 @@ export default function MovieList({props}) {
         const movieList = props.movieswithparams.map((movie) =>             <tr className='listrow' key={movie._id} value={movie.title}>
             <td>{movie.title}</td>
             <td>{movie.year}</td>
-            <td>{movie.cast}</td>             
+            <td>{movie.cast.join(",")}</td>             
         </tr>   
         );
         return (

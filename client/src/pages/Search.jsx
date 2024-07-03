@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_MOVIES_WITH_PARAMS } from '../utils/queries';
 import MovieList from '../components/MovieList';
-import './Search.css'
+import '../components/Styles/Search.css'
 import '../components/Button/style.css'
 
 function Search(){

@@ -35,12 +35,15 @@ query RandomMovie($year:Int!){
 randmovie(year:$year){
 _id
 title
+genres
 plot
 year
 poster
 cast
 directors
 released
+languages
+countries
 }
 }
 `;
