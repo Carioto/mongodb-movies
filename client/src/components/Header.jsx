@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import "./Header.css";
+import "./Styles/Header.css";
 
 
 export default function Header() {
@@ -34,9 +34,9 @@ export default function Header() {
 
   <li className="nav-item">
     <Link 
-     to='login'
-     className={currentPage === '/login' ? 'nav-link active' : 'nav-link'}
-     >Login
+     to='contact'
+     className={currentPage === '/contact' ? 'nav-link active' : 'nav-link'}
+     >Feedback
      </Link>
   </li>
 

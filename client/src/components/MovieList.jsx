@@ -1,4 +1,4 @@
-import './MovieList.css'
+import './Styles/MovieList.css'
 
 export default function MovieList({props}) {
    console.log("🚀 ~ MovieList ~ props:", props)

@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import './components/Styles/index.css';
 
 import Error from './pages/Error';
 import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
 import Login from './pages/Login.jsx';
 import Random from './pages/Random.jsx';
+import Contact from './pages/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,8 +31,8 @@ const router = createBrowserRouter([
         element: <Random />,
       },
       {
-        path: '/login',
-        element: <Login />,
+        path: '/contact',
+        element: <Contact />,
       },
     ],
   }
