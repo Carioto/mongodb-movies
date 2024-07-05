@@ -1,11 +1,16 @@
 .movielist {
   margin: 35px auto;
-  width: 85%;
 }
 .listrow {
   font-size: 1.25rem;
   border-bottom: 1px dodgerblue dotted;
 }
-td {
-  width: 33%;
+
+@media screen and (max-width: 1250px) {
+  .listrow {
+    font-size: 0.5rem;
+  }
+  th {
+    font-size: 0.75rem;
+  }
 }

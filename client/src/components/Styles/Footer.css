@@ -18,3 +18,16 @@
   margin-left: 5px;
   font-family: myFirstFont;
 }
+@media screen and (max-width: 1000px) {
+  .footdiv {
+    height: 25px;
+    padding-bottom: 30px;
+  }
+  .footimg {
+    height: 24px;
+    padding-bottom: 2px;
+  }
+  .footnote {
+    font-size: 0.75rem;
+  }
+}

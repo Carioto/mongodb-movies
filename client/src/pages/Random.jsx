@@ -13,12 +13,14 @@ export default function Random(){
     const { loading, error, data, refetch } = useQuery(QUERY_RANDOM_MOVIE, {
         variables:{ year:year },
     });
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
-            
     const childToParent = (getData) => {
         setYear(parseInt(getData.value));
         }
+        
+    if (loading) return 'Loading...';
+    if (error) return `Error! ${error.message}`;
+    if (!data.randmovie) { childToParent(year + 1)}
+            
 
     return (
         <>
@@ -27,7 +29,7 @@ export default function Random(){
             {!loading ? (
                 <div className='randMovCont'>
                  <div className='oneofthree'>
-                  <h4 className='movtitle'>{data.randmovie.title}</h4>
+                  <h4 className='movtitle'>{data.randmovie.title && data.randmovie.title}</h4>
                    <p className='star'>
                      Cast: {data.randmovie.cast && data.randmovie.cast.join(",")}</p>
                    <p>Director: {data.randmovie.directors && data.randmovie.directors[0]}</p>

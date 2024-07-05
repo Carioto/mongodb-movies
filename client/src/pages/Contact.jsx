@@ -41,13 +41,13 @@ function Contact(){
         setComment('');
         setFullName('');
         setEmailAddress('');
-        setAnyMessage('Message sent, Thanks!');
+        setAnyMessage('Message sent. Thanks!');
         return;
   }
 
     return(
       <div className='container text-center '>
-        <h2>Contact me via Email</h2>
+        <h2 className='contactHead'>Contact me via Email</h2>
         <form className='form contactform' onSubmit={handleFormSubmit} id="formed">
           <input
             className='contactinput'
@@ -65,17 +65,18 @@ function Contact(){
             name='emailAddress'
             onChange={handleInputChange}
             type='email'
-            placeholder='Email'
+            placeholder='Email Address'
             required
           />
           <br></br>
-          <input
+          <textarea
             className='contactinput'
             value={comment}
             name='comment'
             onChange={handleInputChange}
+            rows='5'
             type='text'
-            placeholder='Your Text'
+            placeholder='Your Comment'
             required
           />
           <br></br>
@@ -85,7 +86,7 @@ function Contact(){
         </form>
         {anyMessage && (
           <div>
-            <p className='any-text'>{anyMessage}</p>
+            <p className='anytext'>{anyMessage}</p>
           </div>
         )}
       </div>

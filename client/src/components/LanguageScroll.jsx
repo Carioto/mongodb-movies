@@ -18,9 +18,9 @@ function LanguageScroll({childToParent}) {
         <select className="form-select paramselect" name='language' 
 
         onChange={() => childToParent(event.target)} aria-label="Default select example">
-        <option value={'nil'}>Language</option>
+        <option className="text-center" value={'nil'}>Language</option>
          {languagelist.map((language) => {
-           return <option key={language} value={language}>{language}</option>
+           return <option className="text-center" key={language} value={language}>{language}</option>
          })}
         </select>
         </>

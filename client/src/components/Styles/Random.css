@@ -33,3 +33,19 @@
 .nextrand {
   margin-top: 200px;
 }
+
+@media screen and (max-width: 1250px) {
+  .randMovCont {
+    display: block;
+  }
+
+  .oneofthree,
+  .twoofthree,
+  .threeofthree {
+    width: 98%;
+    height: auto;
+  }
+  .moviePoster {
+    margin: 10px auto;
+  }
+}

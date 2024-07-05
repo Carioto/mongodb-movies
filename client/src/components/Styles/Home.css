@@ -5,20 +5,12 @@ h2 {
 .star {
   margin-top: 10px;
 }
-.plot {
-  width: 75%;
-  margin: auto;
-}
-.randMovCont {
-  display: flex;
-}
-.oneofthree,
-.twoofthree,
-.threeofthree {
-  width: 33%;
-  height: 505px;
-}
 
-.nextrand {
-  margin-top: 200px;
+@media screen and (max-width: 1250px) {
+  h2,
+  h3 {
+    margin-top: 85px;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
 }

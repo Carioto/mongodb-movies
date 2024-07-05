@@ -7,33 +7,24 @@ const resolvers = {
           return newmovs
         },
 
-        movieswithparams: async(parent, {genres}) => {
-          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!made it', genres);
+        movieswithparams: async(parent, {year}) => {
+          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!made it', year);
         let pipeline=[];
-          pipeline.push({$match:{year:1951}})
+          pipeline.push({$match:{year:year}})
           pipeline.push({$match:{languages:'English'}})
           pipeline.push({$match:{genres:'Comedy'}})
           pipeline.push({$sample: { size: 12 } })
 
-        const parammovs =  Movie.aggregate( pipeline );
+        const parammovs = await Movie.aggregate( pipeline );
+        console.log("🚀 ~ movieswithparams:async ~ parammovs:", parammovs)
         return parammovs
         },
 
         randmovie:async(parent, {year}) => {
-          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Made IT',parent,  year)
          const randmovie=  await Movie.aggregate(
           [{$match:{year:year}},
             { $sample: { size: 1 } }]);
-          console.log(randmovie);
           return randmovie[0]
-        },
-
-        randfocusedmovie:async(parent) => {
-         const randfocusedmovie=  await Movie.aggregate(
-           [{$match: {$year:year}},
-            { $sample: { size: 1 } }]);
-          console.log(randfocusedmovie);
-          return randfocusedmovie[0]
         },
 
         genrelist:async(parent) => {

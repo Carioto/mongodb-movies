@@ -13,16 +13,14 @@ function Search(){
   const [ genres, setGenreSearch ] = useState('nil');
   const [ yearSearch, setYearSearch ] = useState(0);
 
-  const [getMovie, { loading, error, data, refetch, networkStatus }] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
-          variables:{genres:genres},
+  const [getMovie, { loading, error, data, refetch}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
+          variables:{year:yearSearch},
   });
   
   console.log("🚀 ~ Search ~ data:", data)
-  console.log("🚀 ~ Search ~ genres:", genres)
-  console.log("🚀 ~ Search ~ networkStatus:", networkStatus)
   
   if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  if (error) return <p className='errmess'> Error! ${error.message} </p>;
   
   const childToParent = (getData) => {
     if(getData.name === 'language'){
@@ -34,7 +32,7 @@ function Search(){
       console.log("🚀 ~ Search ~ setGenreSearch:", getData.value)
     }
     if(getData.name === 'year'){
-      setYearSearch(getData.value);
+      setYearSearch(parseInt(getData.value));
       console.log("🚀 ~ Search ~ setYearSearch:", getData.value)
       
     }}
@@ -42,23 +40,19 @@ function Search(){
     return(
       <>
       <div>
-        <h1>Create a List</h1>
+        <h2>Create a List</h2>
         <p>Select your options to create a list of movies</p>
       </div>
-      <div>
+      <div className='optionscont'>
         <YearScroll childToParent={childToParent}/>
         <GenreScroll childToParent={childToParent} />
         <LanguageScroll childToParent={childToParent} />
-
-        <div className='button-container-1'>
+        <p className='button-container-1'>
         <span className="mas">Search</span>
         <button name='searchParams' className='paramsBut '
-          onClick={
-       () => getMovie({variables: { genres:genres}})
-          }>Search</button>
-          
-          
-          </div> 
+          onClick={() => refetch()}
+          >Search</button>
+        </p> 
 
       </div>
       <div>

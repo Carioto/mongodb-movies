@@ -60,7 +60,7 @@ genrelist:[Movie]
 # get list of all languages
 languagelist:[Movie]
 #get movie list with params
-movieswithparams(genre:[String]):Movie
+movieswithparams(year: Int):[Movie]
 }
 `;
 

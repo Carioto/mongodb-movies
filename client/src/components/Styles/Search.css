@@ -1,5 +1,23 @@
+.optionscont {
+  display: flex;
+}
+
 .paramselect {
-  width: 35%;
+  width: 25%;
   margin: auto;
   margin-bottom: 65px;
+}
+
+@media screen and (max-width: 1250px) {
+  .paramselect {
+    font: 0.65em sans-serif;
+    margin-bottom: 5px;
+    width: 55%;
+  }
+  .optionscont {
+    display: block;
+  }
+  .errmess {
+    margin-top: 95px;
+  }
 }

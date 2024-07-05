@@ -5,9 +5,10 @@ export default function MovieList({props}) {
    
     if(props){
         const movieList = props.movieswithparams.map((movie) =>             <tr className='listrow' key={movie._id} value={movie.title}>
-            <td>{movie.title}</td>
+            <td><a href="#">{movie.title}</a></td>
             <td>{movie.year}</td>
-            <td>{movie.cast.join(",")}</td>             
+            <td>{movie.cast.join(",")}</td>
+            <td>{movie.plot}</td>
         </tr>   
         );
         return (
@@ -18,6 +19,7 @@ export default function MovieList({props}) {
                     <th>Title</th>
                     <th>Year</th>
                     <th>Cast</th>
+                    <th>Plot</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -8,3 +8,13 @@
   width: 70%;
   margin-left: auto;
 }
+@media screen and (max-width: 1250px) {
+  .headcont {
+    display: block;
+    border-bottom: none;
+    font-size: 0.75rem;
+  }
+  .logo {
+    margin-top: 25px;
+  }
+}
