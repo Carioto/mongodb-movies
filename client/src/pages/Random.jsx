@@ -40,7 +40,7 @@ export default function Random(){
                    <p className='plot' >Plot: {data.randmovie.plot && data.randmovie.plot}</p>
                  </div>
                  <div className='twoofthree'>
-                    <MoviePoster props={data} />
+                    <MoviePoster props={data.randmovie} />
                  </div>
                  <div className='threeofthree'>
                     <h4>Select Year</h4>

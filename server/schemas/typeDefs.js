@@ -61,6 +61,8 @@ genrelist:[Movie]
 languagelist:[Movie]
 #get movie list with params
 movieswithparams(year: Int):[Movie]
+#get movie using id
+moviewithid(id: ID):Movie
 }
 `;
 

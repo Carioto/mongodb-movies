@@ -11,6 +11,7 @@ import Search from './pages/Search.jsx';
 import Login from './pages/Login.jsx';
 import Random from './pages/Random.jsx';
 import Contact from './pages/Contact.jsx';
+import MovieSearchDetail from './pages/MovieSearchDetail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />,
+      },
+      {
+        path: '/MovieSearchDetail/:movieId',
+        element: <MovieSearchDetail />,
       },
     ],
   }

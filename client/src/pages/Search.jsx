@@ -16,9 +16,7 @@ function Search(){
   const [getMovie, { loading, error, data, refetch}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
           variables:{year:yearSearch},
   });
-  
-  console.log("🚀 ~ Search ~ data:", data)
-  
+    
   if (loading) return 'Loading...';
   if (error) return <p className='errmess'> Error! ${error.message} </p>;
   

@@ -62,3 +62,22 @@ directors
 }
 }
 `;
+
+export const QUERY_A_MOVIE_WITH_ID = gql `
+query getamoviewithid($id:ID!){
+moviewithid(id:$id){
+_id
+title
+cast
+directors
+year
+genres
+languages
+countries
+plot
+fullplot
+poster
+rated
+}
+}
+`;
