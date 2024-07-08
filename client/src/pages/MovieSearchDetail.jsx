@@ -19,25 +19,24 @@ export default function MovieSearchDetail(){
     return (
         <>
         <div className='detailDiv'>
-            <h5>Movie Details</h5>
             {!loading ? (
                 <div className='detailCont'>
+                 <div className='twooftwo'>
+                    <MoviePoster props={data.moviewithid} />
+                 </div>
                  <div className='oneoftwo'>
                   <h4 className='movtitle'>{data.moviewithid.title && data.moviewithid.title}</h4>
                    <p className='star'>
-                     Cast: {data.moviewithid.cast && data.moviewithid.cast.join(",")}</p>
-                   <p>Director: {data.moviewithid.directors && data.moviewithid.directors[0]}</p>
-                   <p>Year: {data.moviewithid.year && data.moviewithid.year}</p>
-                   <p>Genres:  {data.moviewithid.genres && data.moviewithid.genres.join(",")}</p>
-                   <p>Languages:  {data.moviewithid.languages && data.moviewithid.languages.join(",")}</p>
-                   <p>Country:  {data.moviewithid.countries && data.moviewithid.countries.join(",")}</p>
-                   <p>Rated:  {data.moviewithid.rated && data.moviewithid.rated}</p>
-                   <p>Plot: {data.moviewithid.fullplot && data.moviewithid.fullplot}</p>
-                   <p>IMDB Rating: {data.moviewithid.rated && data.moviewithid.rated}</p>
-                   <p>Rotten Tomatoes: {data.moviewithid.rated && data.moviewithid.rated}</p>
-                 </div>
-                 <div className='twooftwo'>
-                    <MoviePoster props={data.moviewithid} />
+                   <span className='detailLabel'>Cast:</span> {data.moviewithid.cast && data.moviewithid.cast.join(", ")}</p>
+                   <p><span className='detailLabel'>Director:</span> {data.moviewithid.directors && data.moviewithid.directors[0]}</p>
+                   <p><span className='detailLabel'>Year:</span> {data.moviewithid.year && data.moviewithid.year}</p>
+                   <p><span className='detailLabel'>Genres:</span>  {data.moviewithid.genres && data.moviewithid.genres.join(", ")}</p>
+                   <p><span className='detailLabel'>Languages:</span>  {data.moviewithid.languages && data.moviewithid.languages.join(", ")}</p>
+                   <p><span className='detailLabel'>Country:</span>  {data.moviewithid.countries && data.moviewithid.countries.join(", ")}</p>
+                   <p><span className='detailLabel'>Rated:</span>  {data.moviewithid.rated && data.moviewithid.rated}</p>
+                   <p><span className='detailLabel'>IMDB</span><br/> <span className='detailLabel'>Rating:</span> {data.moviewithid.imdb[0].rating && data.moviewithid.imdb[0].rating} <span className='detailLabel'>Votes: </span>{data.moviewithid.imdb[0].votes && data.moviewithid.imdb[0].votes}</p>
+                   <p><span className='detailLabel'>Rotten Tomatoes:</span> {data.moviewithid.rated && data.moviewithid.rated}</p>
+                   <p><span className='detailLabel'>Plot:</span><br/> {data.moviewithid.fullplot && data.moviewithid.fullplot}</p>
                  </div>
                  
                 </div>

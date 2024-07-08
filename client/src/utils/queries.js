@@ -53,19 +53,16 @@ query getmovieswithparams($year:Int!){
 movieswithparams(year:$year){
 _id
 title
-genres
 plot
 year
-poster
 cast
-directors
 }
 }
 `;
 
 export const QUERY_A_MOVIE_WITH_ID = gql `
 query getamoviewithid($id:ID!){
-moviewithid(id:$id){
+moviewithid(_id:$id){
 _id
 title
 cast
@@ -78,6 +75,16 @@ plot
 fullplot
 poster
 rated
+imdb {
+    rating
+    votes
+    id
+    }
+awards{
+  id
+  wins
+  nominations
+  text}
 }
 }
 `;

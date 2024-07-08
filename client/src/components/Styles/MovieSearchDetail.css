@@ -10,7 +10,26 @@
   width: 50%;
 }
 .moviePoster {
-  margin-left: 30px;
+  margin-right: 30px;
   width: 99%;
   height: 99%;
+}
+
+.detailLabel {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1250px) {
+  .detailCont {
+    display: block;
+  }
+  .oneoftwo,
+  .twooftwo {
+    width: 98%;
+    height: auto;
+  }
+  .moviePoster {
+    margin: 10px auto;
+    height: auto;
+  }
 }

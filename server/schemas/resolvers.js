@@ -7,36 +7,40 @@ const resolvers = {
           return newmovs
         },
 
-        movieswithparams: async(parent, {year}) => {
-          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!made it', year);
+        movieswithparams: async(parent, {year, language}) => {
+          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!made it', language);
           let pipeline=[];
           pipeline.push({$match:{year:year}})
           pipeline.push({$match:{languages:'English'}})
           pipeline.push({$match:{genres:'Comedy'}})
-          pipeline.push({$sample: { size: 12 } })
+          pipeline.push({$sample: { size: 2 } })
           const parammovs = await Movie.aggregate( pipeline );
+          console.log("🚀 ~ movieswithparams:async ~ pipeline:", pipeline)
           console.log("🚀 ~ movieswithparams:async ~ parammovs:", parammovs)
           return parammovs
         },
 
-        randmovie:async(parent, {year}) => {
-          const randmovie=  await Movie.aggregate(
-            [{$match:{year:year}},
-            { $sample: { size: 1 } }]);
-          return randmovie[0]
-        },
-
-        moviewithid:async(parent, {id}) => {
-          console.log("----------------------->>>>>resolvers 🚀 ~ moviewithid:async ~ _id:", id)
-          const moviepick=  await Movie.findOne(
-            {_id:id}
-            );
-            console.log("🚀 ~ moviewithid:async ~ moviepick:", moviepick)
-          return moviepick
-        },
-
-
-
+        
+        moviewithid:async(parent, {_id}) => {
+          console.log("----------------------->>>>>resolvers 🚀 ~ moviewithid:async ~ _id:",_id);
+          // const moviepick = await Movie.aggregate(
+          //   [{$match:{id:_id}}]
+          // )
+          const moviepick=  await Movie.findById(
+              {_id:_id}
+              );
+            console.log("🚀 ~99999999999999999999999999999999999999999999999999999999999999999 moviewithid:async ~ moviepick:", moviepick)
+            return moviepick
+          },
+          
+          randmovie:async(parent, {year}) => {
+            const randmovie=  await Movie.aggregate(
+              [{$match:{year:year}},
+              { $sample: { size: 1 } }]);
+            return randmovie[0]
+          },
+          
+          
         genrelist:async(parent) => {
           const listgenres=  await Movie.aggregate(
            [

@@ -1,4 +1,5 @@
 const typeDefs = `
+
 type Movie {
     _id:ID
     plot: String
@@ -17,28 +18,29 @@ type Movie {
     year:Int
     imdb:[Imdb]
     countries:[String]
-    tomatoes:[Tomato]
+    tomatoes:Tomato
     writers:[String]
     type:String
     plot_embedding:[Int]
     metacritic:Int
-}
-
-type Award {
-   id:ID
-   wins: Int
-   nominations: Int
-   text: String
-}
-
-type Imdb {
-    rating:Int
-    votes:Int 
-    id:Int
-}
-
+    }
+    
+ type Award {
+      id:ID
+      wins: Int
+      nominations: Int
+      text: String
+    }
+        
+ "for the imdb object"
+ type Imdb {
+      id:Int
+      rating:Float
+      votes:Int 
+   }
+        
 type Tomato {
-    viewer:[View]
+   viewer:[View]
     production:String
     lastUpdated:String
 }
@@ -60,9 +62,9 @@ genrelist:[Movie]
 # get list of all languages
 languagelist:[Movie]
 #get movie list with params
-movieswithparams(year: Int):[Movie]
+movieswithparams(year: Int, languages:String):[Movie]
 #get movie using id
-moviewithid(id: ID):Movie
+moviewithid(_id: ID!):Movie
 }
 `;
 

@@ -14,7 +14,10 @@ function Search(){
   const [ yearSearch, setYearSearch ] = useState(0);
 
   const [getMovie, { loading, error, data, refetch}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
-          variables:{year:yearSearch},
+          variables:{
+            year:yearSearch,
+            language:langSearch
+          },
   });
     
   if (loading) return 'Loading...';
