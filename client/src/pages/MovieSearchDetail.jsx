@@ -34,8 +34,9 @@ export default function MovieSearchDetail(){
                    <p><span className='detailLabel'>Languages:</span>  {data.moviewithid.languages && data.moviewithid.languages.join(", ")}</p>
                    <p><span className='detailLabel'>Country:</span>  {data.moviewithid.countries && data.moviewithid.countries.join(", ")}</p>
                    <p><span className='detailLabel'>Rated:</span>  {data.moviewithid.rated && data.moviewithid.rated}</p>
+                   <p><span className='detailLabel'>Runtime:</span>  {data.moviewithid.runtime && data.moviewithid.runtime} minutes</p>
                    <p><span className='detailLabel'>IMDB</span><br/> <span className='detailLabel'>Rating:</span> {data.moviewithid.imdb[0].rating && data.moviewithid.imdb[0].rating} <span className='detailLabel'>Votes: </span>{data.moviewithid.imdb[0].votes && data.moviewithid.imdb[0].votes}</p>
-                   <p><span className='detailLabel'>Rotten Tomatoes:</span> {data.moviewithid.rated && data.moviewithid.rated}</p>
+                   {/* <p><span className='detailLabel'>Rotten Tomatoes:</span> {data.moviewithid.rated && data.moviewithid.rated}</p> */}
                    <p><span className='detailLabel'>Plot:</span><br/> {data.moviewithid.fullplot && data.moviewithid.fullplot}</p>
                  </div>
                  

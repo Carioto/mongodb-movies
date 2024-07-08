@@ -67,6 +67,7 @@ _id
 title
 cast
 directors
+runtime
 year
 genres
 languages
