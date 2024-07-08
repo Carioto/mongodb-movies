@@ -7,29 +7,27 @@ const resolvers = {
           return newmovs
         },
 
-        movieswithparams: async(parent, {year, language}) => {
-          console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!made it', language);
+        movieswithparams: async(parent, {year, languages, genres}) => {
           let pipeline=[];
+          if(year != 0){
           pipeline.push({$match:{year:year}})
-          pipeline.push({$match:{languages:'English'}})
-          pipeline.push({$match:{genres:'Comedy'}})
-          pipeline.push({$sample: { size: 2 } })
+          }
+          if(languages != 'nil'){
+          pipeline.push({$match:{languages:languages}})
+          }
+          if(genres != 'nil'){
+          pipeline.push({$match:{genres:genres}})
+          }
+          pipeline.push({$sample: { size: 12 } })
           const parammovs = await Movie.aggregate( pipeline );
-          console.log("🚀 ~ movieswithparams:async ~ pipeline:", pipeline)
-          console.log("🚀 ~ movieswithparams:async ~ parammovs:", parammovs)
           return parammovs
         },
 
         
         moviewithid:async(parent, {_id}) => {
-          console.log("----------------------->>>>>resolvers 🚀 ~ moviewithid:async ~ _id:",_id);
-          // const moviepick = await Movie.aggregate(
-          //   [{$match:{id:_id}}]
-          // )
           const moviepick=  await Movie.findById(
               {_id:_id}
               );
-            console.log("🚀 ~99999999999999999999999999999999999999999999999999999999999999999 moviewithid:async ~ moviepick:", moviepick)
             return moviepick
           },
           
