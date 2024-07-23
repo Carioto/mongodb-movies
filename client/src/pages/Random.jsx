@@ -29,21 +29,7 @@ export default function Random(){
             {!loading ? (
                 <div className='randMovCont'>
                  <div className='oneofthree'>
-                  <h4 className='movtitle'>{data.randmovie.title && data.randmovie.title}</h4>
-                   <p className='star'>
-                     Cast: {data.randmovie.cast && data.randmovie.cast.join(",")}</p>
-                   <p>Director: {data.randmovie.directors && data.randmovie.directors[0]}</p>
-                   <p>Year: {data.randmovie.year && data.randmovie.year}</p>
-                   <p>Genres:  {data.randmovie.genres && data.randmovie.genres.join(",")}</p>
-                   <p>Languages:  {data.randmovie.languages && data.randmovie.languages.join(",")}</p>
-                   <p>Country:  {data.randmovie.countries && data.randmovie.countries.join(",")}</p>
-                   <p className='plot' >Plot: {data.randmovie.plot && data.randmovie.plot}</p>
-                 </div>
-                 <div className='twoofthree'>
-                    <MoviePoster props={data.randmovie} />
-                 </div>
-                 <div className='threeofthree'>
-                    <h4>Select Year</h4>
+                 <h4>Select Year</h4>
                     <YearScroll childToParent={childToParent}/>
                     <span className='yearTitle'>Current Year:
                     <p className='theYear'>{year}</p>
@@ -52,7 +38,21 @@ export default function Random(){
                      <span className="mas">Search</span>
                      <button name='searchParams' className='paramsBut '
                      onClick={() => refetch()}>Search</button>
-                  </div> 
+                  </div>                   
+                 </div>
+                 <div className='twoofthree'>
+                    <MoviePoster props={data.randmovie} />
+                 </div>
+                 <div className='threeofthree'>
+                 <h4 className='movtitle'>{data.randmovie.title && data.randmovie.title}</h4>
+                   <p className='star'>
+                     Cast: {data.randmovie.cast && data.randmovie.cast.join(",")}</p>
+                   <p>Director: {data.randmovie.directors && data.randmovie.directors[0]}</p>
+                   <p>Year: {data.randmovie.year && data.randmovie.year}</p>
+                   <p>Genres:  {data.randmovie.genres && data.randmovie.genres.join(",")}</p>
+                   <p>Languages:  {data.randmovie.languages && data.randmovie.languages.join(",")}</p>
+                   <p>Country:  {data.randmovie.countries && data.randmovie.countries.join(",")}</p>
+                   <p className='plot' >Plot: {data.randmovie.plot && data.randmovie.plot}</p>
                  </div>
                 </div>
             ) : (

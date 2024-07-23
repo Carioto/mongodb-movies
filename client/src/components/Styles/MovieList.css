@@ -6,7 +6,7 @@
   border-bottom: 1px dodgerblue dotted;
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1050px) {
   .listrow {
     font-size: 0.5rem;
   }

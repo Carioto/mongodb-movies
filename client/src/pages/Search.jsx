@@ -13,7 +13,7 @@ function Search(){
   const [ genres, setGenreSearch ] = useState('nil');
   const [ yearSearch, setYearSearch ] = useState(0);
 
-  const [getMovie, { loading, error, data, refetch}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
+  const [getMovie, { loading, error, data, refetch, called}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
           variables:{
             year:yearSearch,
             language:langSearch,
@@ -23,27 +23,35 @@ function Search(){
     
   if (loading) return 'Loading...';
   if (error) return <p className='errmess'> Error! ${error.message} </p>;
+ 
   
   const childToParent = (getData) => {
     if(getData.name === 'language'){
       setLangSearch(getData.value)
-      console.log("🚀 ~ Search ~ setLangSearch:", getData.value)
     }
     if(getData.name === 'genre'){
       setGenreSearch(getData.value)
-      console.log("🚀 ~ Search ~ setGenreSearch:", getData.value)
     }
     if(getData.name === 'year'){
       setYearSearch(parseInt(getData.value));
-      console.log("🚀 ~ Search ~ setYearSearch:", getData.value)
       
     }}
 
+
+    const getalist = () => {
+
+       refetch()
+
+    }
     return(
       <>
+     <div className='quests'style={{
+       display: (!called) ? "block" : "none",
+    }}>
       <div>
         <h2>Create a List</h2>
         <p>Select your options to create a list of movies</p>
+        <p>Leave blank to search ALL years, genres, and/or Languages</p>
       </div>
       <div className='optionscont'>
         <YearScroll childToParent={childToParent}/>
@@ -52,13 +60,19 @@ function Search(){
         <p className='button-container-1'>
         <span className="mas">Search</span>
         <button name='searchParams' className='paramsBut '
-          onClick={() => refetch()}
+          onClick={getalist}
           >Search</button>
         </p> 
 
+      </div> 
       </div>
       <div>
-         <MovieList props={data} />
+         
+         {(called && !data.movieswithparams.length)
+         ?(<p className='nomess'> Sorry, no movies match your criteria. <button onClick={() => window.location.reload()}>Start Over</button></p>
+
+         )
+         :(<MovieList props={data} />)}
       </div>
 
 

@@ -9,6 +9,6 @@ export default function MoviePoster(props){
             </>
         )
     } else {
-        return "No poster available"
+        return <p className="nopeP">No poster available</p>
     }
 }

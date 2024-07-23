@@ -10,7 +10,6 @@ function YearScroll({childToParent}) {
     }
 
     const clickHandler = (event) => {
-      console.log("🚀 ~ clickHandler ~ event:", event.target.value)
       childToParent(event.target);
       event.preventDefault();
     }

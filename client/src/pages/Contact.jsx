@@ -29,8 +29,6 @@ function Contact(){
         setAnyMessage('Invalid name or email');
         return;
     }
-        console.log(fullName,emailAddress,comment)
-
         emailjs.send("service_po6zgoc","template_digtl4b",{
           from_name: `${fullName}`,
           to_name: "David",
@@ -80,9 +78,11 @@ function Contact(){
             required
           />
           <br></br>
-          <button type='submit'>
-            Submit
-          </button>
+          <div className='button-container-3'>
+                     <span className="mas">Click Here</span>
+                     <button type='submit' className='SubBut '
+                     >Submit</button>
+                  </div>                   
         </form>
         {anyMessage && (
           <div>

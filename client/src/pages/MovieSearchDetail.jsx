@@ -10,12 +10,6 @@ export default function MovieSearchDetail(){
     
     const { loading, error, data } = useQuery ( QUERY_A_MOVIE_WITH_ID, {variables:{id:movieId}});
     
-    console.log("🚀 ~ MovieSearchDetail ~ movieId:", movieId)
-    console.log("🚀 ~ MovieSearchDetail ~ data:", data)
-
-
-
-
     return (
         <>
         <div className='detailDiv'>

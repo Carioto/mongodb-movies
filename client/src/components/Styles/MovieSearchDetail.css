@@ -1,3 +1,8 @@
+.detailDiv {
+  margin-top: 3%;
+  margin-bottom: 4%;
+}
+
 .detailCont {
   display: flex;
 }
@@ -19,7 +24,7 @@
   font-weight: 600;
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1050px) {
   .detailCont {
     display: block;
   }

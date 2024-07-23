@@ -2,6 +2,9 @@
   width: 375px;
   height: 500px;
 }
+.nopeP {
+  margin-top: 25%;
+}
 .movtitle {
   padding: 10px;
   font-family: serif;
@@ -22,6 +25,7 @@
 }
 .randMovCont {
   display: flex;
+  margin-bottom: 33px;
 }
 .oneofthree,
 .twoofthree,
@@ -34,11 +38,13 @@
   margin-top: 200px;
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1050px) {
   .randMovCont {
     display: block;
   }
-
+  .nopeP {
+    margin-top: 5%;
+  }
   .oneofthree,
   .twoofthree,
   .threeofthree {
