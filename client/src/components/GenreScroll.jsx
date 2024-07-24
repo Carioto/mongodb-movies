@@ -1,8 +1,10 @@
 import { GET_ALL_GENRES } from '../utils/queries';
 import { useQuery } from '@apollo/client';
+import { useState } from 'react';
 
 
-function GenreScroll({childToParent}) {
+function GenreScroll({childToParent, genre}) {
+  const [listGenre, setListGenre] = useState(genre)
  const { loading, error, data } = useQuery(GET_ALL_GENRES);
   
  let genrelist=[]; 

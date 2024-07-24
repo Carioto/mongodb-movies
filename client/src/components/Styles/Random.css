@@ -2,6 +2,12 @@
   width: 375px;
   height: 500px;
 }
+.paramselect {
+  width: 40%;
+}
+.selYearH {
+  margin-bottom: 12%;
+}
 .nopeP {
   margin-top: 25%;
 }

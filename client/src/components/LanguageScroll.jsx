@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { GET_ALL_LANGUAGES } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 
-function LanguageScroll({childToParent}) {
+function LanguageScroll({childToParent, language}) {
+  const [listLang, setListLang] = useState(language)
   const { loading, error, data } = useQuery(GET_ALL_LANGUAGES);
 
 

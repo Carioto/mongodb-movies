@@ -11,7 +11,7 @@ import '../components/Button/style.css'
 function Search(){
   const [ langSearch, setLangSearch ] = useState('nil');
   const [ genres, setGenreSearch ] = useState('nil');
-  const [ yearSearch, setYearSearch ] = useState(0);
+  const [ yearSearch, setYearSearch ] = useState('Year');
 
   const [getMovie, { loading, error, data, refetch, called}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
           variables:{
@@ -54,9 +54,9 @@ function Search(){
         <p>Leave blank to search ALL years, genres, and/or Languages</p>
       </div>
       <div className='optionscont'>
-        <YearScroll childToParent={childToParent}/>
-        <GenreScroll childToParent={childToParent} />
-        <LanguageScroll childToParent={childToParent} />
+        <YearScroll childToParent={childToParent} year={yearSearch} />
+        <GenreScroll childToParent={childToParent} language={langSearch} />
+        <LanguageScroll childToParent={childToParent} genre={genres} />
         <p className='button-container-1'>
         <span className="mas">Search</span>
         <button name='searchParams' className='paramsBut '

@@ -16,11 +16,11 @@ export default function Random(){
     const childToParent = (getData) => {
         setYear(parseInt(getData.value));
         }
-        
-    if (loading) return 'Loading...';
+         
+        if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     if (!data.randmovie) { childToParent(year + 1)}
-            
+           
 
     return (
         <>
@@ -29,11 +29,8 @@ export default function Random(){
             {!loading ? (
                 <div className='randMovCont'>
                  <div className='oneofthree'>
-                 <h4>Select Year</h4>
-                    <YearScroll childToParent={childToParent}/>
-                    <span className='yearTitle'>Current Year:
-                    <p className='theYear'>{year}</p>
-                    </span>
+                 <h4 className='selYearH'>Select Year</h4>
+                    <YearScroll childToParent={childToParent} year={year}/>
                   <div className='button-container-2'>
                      <span className="mas">Search</span>
                      <button name='searchParams' className='paramsBut '
