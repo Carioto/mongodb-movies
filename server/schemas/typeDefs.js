@@ -59,7 +59,7 @@ randmovie(year: Int): Movie
 randfocusedmovie:Movie
 # get list of all genres
 genrelist:[Movie]
-# get list of all languages
+# get list of top 33 by movie count languages
 languagelist:[Movie]
 #get movie list with params
 movieswithparams(year: Int, languages:String, genres:String):[Movie]

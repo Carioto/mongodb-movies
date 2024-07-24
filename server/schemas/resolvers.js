@@ -50,14 +50,12 @@ const resolvers = {
             ])
             return listgenres;
           },
-
+        
         languagelist:async(parent) => {
           const listlanguages=  await Movie.aggregate(
             [{$unwind:"$languages"},
-              {$group: 
-                {"_id": "$languages"
-                  }},
-                    {$sort:{_id : 1}},
+             {$sortByCount:"$languages"},
+             {$limit:33}
             ])
           return listlanguages;
         }
