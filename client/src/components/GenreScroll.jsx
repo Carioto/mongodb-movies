@@ -16,7 +16,7 @@ function GenreScroll({childToParent, genre}) {
 }
   return( 
     <>
-    <select className="form-select paramselect" name='genre' 
+    <select className="form-select paramselect searchSelect" name='genre' 
     onChange={() => childToParent(event.target)} aria-label="Default select example">
     <option className="text-center" value={'nil'}>Genre</option>
      {genrelist.map((genre) => {

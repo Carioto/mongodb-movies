@@ -6,9 +6,9 @@ export default function MovieList({props}) {
     if(props){
         const movieList = props.movieswithparams.map((movie) =>             <tr className='listrow' key={movie._id} value={movie.title}>
             <td><Link to={`/MovieSearchDetail/${movie._id}`}>{movie.title}</Link></td>
-            <td>{movie.year}</td>
-            <td>{movie.cast.join(",")}</td>
-            <td>{movie.plot}</td>
+            <td className='yearData'>{movie.year}</td>
+            <td>{movie.cast.join(", ")}</td>
+            <td>{movie.plot || "Not Available"}</td>
         </tr>   
         );
         return (

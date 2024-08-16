@@ -23,8 +23,18 @@ type Movie {
     type:String
     plot_embedding:[Int]
     metacritic:Int
+    comments:[Comment]
     }
     
+type Comment{
+    _id:ID
+    name:String
+    email:String
+    movie_id:ID
+    text:String
+    date:String
+}
+
  type Award {
       id:ID
       wins: Int
@@ -51,6 +61,8 @@ type View {
 }
 
 type Query {
+# get all comments
+comments(movie_id:ID): [Comment]
 # get all movies
 movies:[Movie]!
 # get a random movie

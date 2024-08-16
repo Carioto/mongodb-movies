@@ -1,3 +1,3 @@
 const Movie = require('./Movie');
-
-module.exports = {Movie};
+const Comment = require('./Comment')
+module.exports = {Movie, Comment};

@@ -1,4 +1,4 @@
-const { Movie } = require('../models');
+const { Movie, Comment } = require('../models');
 
 const resolvers = {
     Query: {
@@ -23,11 +23,21 @@ const resolvers = {
           return parammovs
         },
 
-        
+        comments:async(parent,{movie_id}) => {
+          console.log("🚀 ~ comments:async ~ _id:", movie_id)
+          const moviecomms = await Comment.find({"movie_id":movie_id})
+          // const moviecomms = await Comment.aggregate([
+          //   {$match:{movie_id:movie_id}},
+          //   {$sort:{date:1}},
+          // ]);
+          return moviecomms
+        },
+
         moviewithid:async(parent, {_id}) => {
+          console.log("🚀 ~ moviewithid:async ~ _id:", _id)
           const moviepick=  await Movie.findById(
               {_id:_id}
-              );
+              ).populate('comments');
             return moviepick
           },
           

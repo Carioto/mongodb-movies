@@ -99,7 +99,18 @@ const movieSchema = new Schema (
         metacritic:{
             type: Number,
         },
+        comments: [
+            {
+              type: Schema.Types.ObjectId,
+              ref: "comment",
+            },
+          ],
     },
+    {
+        toJSON: {
+          virtuals: true,
+        },
+      },
 );
 
 const Movie = model('Movie', movieSchema)

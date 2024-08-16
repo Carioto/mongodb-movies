@@ -11,7 +11,7 @@ import '../components/Button/style.css'
 function Search(){
   const [ langSearch, setLangSearch ] = useState('nil');
   const [ genres, setGenreSearch ] = useState('nil');
-  const [ yearSearch, setYearSearch ] = useState('Year');
+  const [ yearSearch, setYearSearch ] = useState(0);
 
   const [getMovie, { loading, error, data, refetch, called}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
           variables:{
@@ -39,7 +39,9 @@ function Search(){
 
 
     const getalist = () => {
-
+       if(yearSearch === "Year"){
+        setYearSearch(0);
+       }
        refetch()
 
     }
@@ -57,7 +59,7 @@ function Search(){
         <YearScroll childToParent={childToParent} year={yearSearch} />
         <GenreScroll childToParent={childToParent} language={langSearch} />
         <LanguageScroll childToParent={childToParent} genre={genres} />
-        <p className='button-container-1'>
+        <p className='button-container-1 searchButt'>
         <span className="mas">Search</span>
         <button name='searchParams' className='paramsBut '
           onClick={getalist}
