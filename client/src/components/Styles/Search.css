@@ -7,6 +7,11 @@
 .searchSelect {
   margin-right: 3px;
 }
+.searchInput {
+  margin-left: 7px;
+  background-color: aliceblue;
+  color: black;
+}
 
 .paramselect {
   width: 25%;

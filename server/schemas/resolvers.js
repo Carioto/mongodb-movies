@@ -7,7 +7,7 @@ const resolvers = {
           return newmovs
         },
 
-        movieswithparams: async(parent, {year, languages, genres}) => {
+        movieswithparams: async(parent, {year, languages, genres,searchwords}) => {
           let pipeline=[];
           if(year != 0){
           pipeline.push({$match:{year:year}})
@@ -18,13 +18,17 @@ const resolvers = {
           if(genres != 'nil'){
           pipeline.push({$match:{genres:genres}})
           }
+          if(searchwords !='nil'){
+            const wordsArr = searchwords.split(" ");
+
+            pipeline.push({$addFields:{'search_title': {$toLower:"$title"}}}, {$addFields:{'search_words':{$split:['$search_title',' ']}}},{$match:{'search_words':{$all: wordsArr}}});
+          }
           pipeline.push({$sample: { size: 12 } })
           const parammovs = await Movie.aggregate( pipeline );
           return parammovs
         },
 
         comments:async(parent,{movie_id}) => {
-          console.log("🚀 ~ comments:async ~ _id:", movie_id)
           const moviecomms = await Comment.find({"movie_id":movie_id})
           // const moviecomms = await Comment.aggregate([
           //   {$match:{movie_id:movie_id}},
@@ -34,7 +38,6 @@ const resolvers = {
         },
 
         moviewithid:async(parent, {_id}) => {
-          console.log("🚀 ~ moviewithid:async ~ _id:", _id)
           const moviepick=  await Movie.findById(
               {_id:_id}
               ).populate('comments');

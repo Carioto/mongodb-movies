@@ -1,6 +1,7 @@
 import YearScroll from '../components/YearScroll'
 import GenreScroll from '../components/GenreScroll';
 import LanguageScroll from '../components/LanguageScroll';
+import WordSearch from '../components/WordSearch';
 import { useState } from 'react';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_MOVIES_WITH_PARAMS } from '../utils/queries';
@@ -12,14 +13,18 @@ function Search(){
   const [ langSearch, setLangSearch ] = useState('nil');
   const [ genres, setGenreSearch ] = useState('nil');
   const [ yearSearch, setYearSearch ] = useState(0);
+  const [ wordsInSearch, setWordsInSearch] = useState('nil');
 
   const [getMovie, { loading, error, data, refetch, called}] = useLazyQuery(QUERY_MOVIES_WITH_PARAMS, {
           variables:{
             year:yearSearch,
             language:langSearch,
-            genre:genres
+            genre:genres,
+            searchwords:wordsInSearch
           },
-  });
+          
+        }
+      );
     
   if (loading) return 'Loading...';
   if (error) return <p className='errmess'> Error! ${error.message} </p>;
@@ -34,8 +39,11 @@ function Search(){
     }
     if(getData.name === 'year'){
       setYearSearch(parseInt(getData.value));
-      
-    }}
+    }
+    if(getData.name === 'words'){
+      setWordsInSearch(getData.value)
+    }
+  }
 
 
     const getalist = () => {
@@ -53,7 +61,10 @@ function Search(){
       <div>
         <h2>Create a List</h2>
         <p>Select your options to create a list of movies</p>
-        <p>Leave blank to search ALL years, genres, and/or Languages</p>
+        <p>Not making a selection will search ALL years, genres, and/or Languages</p>
+      </div>
+      <div className='searchTitle'>
+        <WordSearch childToParent={childToParent} words={wordsInSearch} />
       </div>
       <div className='optionscont'>
         <YearScroll childToParent={childToParent} year={yearSearch} />
