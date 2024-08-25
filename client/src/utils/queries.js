@@ -49,8 +49,8 @@ countries
 `;
 
 export const QUERY_MOVIES_WITH_PARAMS = gql `
-query getmovieswithparams($year:Int!,$language:String,$genre:String){
-movieswithparams(year:$year,languages:$language,genres:$genre){
+query getmovieswithparams($year:Int!,$language:String,$genre:String,$searchwords:String){
+movieswithparams(year:$year,languages:$language,genres:$genre,searchwords:$searchwords){
 _id
 title
 plot

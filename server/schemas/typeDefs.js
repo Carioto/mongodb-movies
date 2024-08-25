@@ -74,7 +74,7 @@ genrelist:[Movie]
 # get list of top 33 by movie count languages
 languagelist:[Movie]
 #get movie list with params
-movieswithparams(year: Int, languages:String, genres:String):[Movie]
+movieswithparams(year: Int, languages:String, genres:String, searchwords:String):[Movie]
 #get movie using id
 moviewithid(_id: ID!):Movie
 }
